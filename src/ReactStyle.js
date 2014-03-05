@@ -70,7 +70,7 @@ ReactStyle.prototype.removeEventListener = function(type, listener) {
   if (listeners) {
     var idx = listeners.indexOf(listener);
     if (idx > -1) {
-      listener.splice(listener);
+      listeners.splice(idx, 1);
     }
   }
 };
