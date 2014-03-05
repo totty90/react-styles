@@ -1,20 +1,21 @@
 /**
  * @providesModule ReactStyleHead
- * @jsx React.DOM 
+ * @jsx React.DOM
  */
-
+define(function(require, exports, module) {
 'use strict'
 
-var React = require('React');
-var ReactStyle = require('ReactStyle');
+var React = require('react');
+// var ReactStyle = require('./ReactStyle');
+
 
 var ReactStyleHead = React.createClass({
   componentDidMount: function() {
-    ReactStyle.addEventListener('change', this.handleStyleChange);
+    this.props.ReactStyle.addEventListener('change', this.handleStyleChange);
   },
 
   componentWillUnmount: function() {
-    ReactStyle.removeEventListener('change', this.handleStyleChange);
+    this.props.ReactStyle.removeEventListener('change', this.handleStyleChange);
   },
 
   handleStyleChange: function() {
@@ -22,13 +23,9 @@ var ReactStyleHead = React.createClass({
   },
 
   render: function() {
-    return this.transferPropsTo(
-      <head>
-        {this.props.children}
-        {ReactStyle.renderToComponents()}
-      </head>
-    );
+    return React.DOM.div({}, this.props.ReactStyle.renderToComponents())
   }
 });
 
 module.exports = ReactStyleHead;
+})

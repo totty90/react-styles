@@ -2,11 +2,11 @@
  * @providesModule ReactStyleRulesManager
  * @jsx React.DOM
  */
-
+define(function(require, exports, module) {
 'use strict'
 
-var React = require('React');
-var ReactStyleRules = require('ReactStyleRules');
+var React = require('react');
+var ReactStyleRules = require('./ReactStyleRules');
 
 /**
  * @param {number} maxRulesLengthPerStyle
@@ -67,12 +67,10 @@ ReactStyleRulesManager.prototype.renderToComponents = function() {
     var newRulesCount = rulesCount + styleRules.length;
     if (newRulesCount > maxRulesLengthPerStyle) {
       if (cssText) {
-        components.push(
-          <style
-            key={'s' + (index++)}
-            dangerouslySetInnerHTML={{__html: cssText}}
-          />
-        );
+        components.push(React.DOM.style({
+            key: 's' + (index++),
+            dangerouslySetInnerHTML: {__html: cssText}
+        }))
         cssText = '';
         rulesCount = 0;
       }
@@ -83,16 +81,14 @@ ReactStyleRulesManager.prototype.renderToComponents = function() {
   }
 
   if (cssText) {
-    components.push(
-      <style
-        key={'s' + (index++)}
-        dangerouslySetInnerHTML={{__html: cssText}}
-      />
-    );
+    components.push(React.DOM.style({
+        key: 's' + (index++),
+        dangerouslySetInnerHTML: {__html: cssText}
+    }))
     cssText = null;
   }
 
-  if (components.lenth > maxComponentsLength) {
+  if (components.length > maxComponentsLength) {
     throw new Error('Too many styles');
   }
 
@@ -101,3 +97,4 @@ ReactStyleRulesManager.prototype.renderToComponents = function() {
 
 module.exports = ReactStyleRulesManager;
 
+})

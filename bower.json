@@ -1,0 +1,21 @@
+{
+  "name": "react-styles",
+  "version": "0.0.0",
+  "homepage": "https://github.com/hedgerwang/react-styles",
+  "authors": [
+    "hedgerwang"
+  ],
+  "main": "src/ReactStyle.js",
+  "keywords": [
+    "react",
+    "style"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

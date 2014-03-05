@@ -1,7 +1,7 @@
 /**
  * @providesModule ReactStyleRules
  */
-
+define(function(require, exports, module) {
 'use strict'
 
 /**
@@ -84,3 +84,4 @@ function hyphenate(str) {
 }
 
 module.exports = ReactStyleRules;
+})

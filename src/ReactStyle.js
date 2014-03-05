@@ -1,9 +1,11 @@
 /**
  * @providesModule ReactStyle
  */
+define(function(require, exports, module) {
+var ReactStyleRules = require('./ReactStyleRules');
+var ReactStyleRulesManager = require('./ReactStyleRulesManager');
+var ReactStyleHead = require('./ReactStyleHead');
 
-var ReactStyleRules = require('ReactStyleRules');
-var ReactStyleRulesManager = require('ReactStyleRulesManager');
 
 /**
  * @constructor
@@ -97,3 +99,4 @@ ReactStyle.prototype.dispatchEvent = function(evt) {
 
 // Export the singleton instance.
 module.exports = new ReactStyle();
+})
